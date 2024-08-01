@@ -15,6 +15,9 @@ from dotenv import load_dotenv
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
+from streamlit_cookies_manager import EncryptedCookieManager
+
+ 
 
 def render_animation():
     path = "assets/typing_animation.json"
@@ -33,6 +36,11 @@ def get_conversation_string():
 st.set_page_config(
     page_title="Softsquare AI",
     page_icon="🤖",
+)
+
+cookies = EncryptedCookieManager(
+    prefix='user360_',
+    password='test' 
 )
 
 load_dotenv()
@@ -79,7 +87,29 @@ if 'prevent_loading' not in st.session_state:
 
 embeddings = OpenAIEmbeddings()
 
-portkey_headers = createHeaders(api_key=portKeyApi,provider="openai")
+
+def realuserid():
+    # cookies.clear()
+    print('cookies ::::::::::::::', cookies)
+    if not cookies.ready():
+      st.stop()
+    if 'email' not in cookies:
+      email=st.text_input("Enter your mail",key='str')
+      print('email ::::: from User:::::::', email)
+      cookies['email']= email
+      return email
+    else:
+      email=cookies['email']
+      print('email ::::: from cookies:::::::', email)
+      st.write(email)
+      return email
+   
+fin=realuserid()
+
+print('fin :::::::::::::', fin)
+
+
+portkey_headers = createHeaders(api_key=portKeyApi,provider="openai", metadata={'_user' : fin})
 
 llm = ChatOpenAI(temperature=0,
                 model=openaiModels,
