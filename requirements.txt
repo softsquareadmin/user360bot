@@ -10,4 +10,4 @@ sentence-transformers==2.2.2
 langchain-community==0.0.32
 tiktoken==0.6.0
 portkey_ai==1.7.0
-streamlit-cookies-manager==0.2.0
+streamlit_cookies_controller==0.0.4
