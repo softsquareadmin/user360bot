@@ -18,9 +18,9 @@ from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 from streamlit_cookies_controller import CookieController
 
 st.set_page_config(
-    page_title="Softsquare AI",
-    page_icon="🤖",
-    initial_sidebar_state= 'expanded'
+    page_title="User360 - AI Chatbot",
+    page_icon="https://raw.githubusercontent.com/Maniyuvi/SoftsquareChatbot/main/SS512X512.png",
+    # initial_sidebar_state= 'expanded'
 )
 
 def render_animation():
@@ -99,9 +99,81 @@ st.markdown("""
                 text-align: center;
                 background-color: #f1f1f1;
                 z-index: 9">
-        Chat with User360 AI Bot
+        User360 - AI Chatbot
+            <p>User360 is a Salesforce AppExchange product by Softsquare, <br> offering Comprehensive user management and optimization for Salesforce environments.</p>
     </h1>
 """, unsafe_allow_html=True)
+
+
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    ._container_gzau3_1, ._profileContainer_gzau3_53,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <style>
+    /* Ensure the entire page uses a flexbox layout */
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Chat container styling */
+    .stApp {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Chat input should stick to the bottom */
+    .stChatInput {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        max-width: 800px; /* Adjust based on your design */
+        margin: 0 auto;
+        margin-bottom: 50px;
+        z-index: 9999;
+        border-top: 1px solid #ddd;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    """
+    <style>
+    /* Hide the span tag by class name */
+    .st-emotion-cache-gi0tri.e1nzilvr1 {
+        display: none !important;
+    }
+
+    /* Optional: Hide the span tag with a specific data-testid */
+    [data-testid="stHeaderActionElements"] {
+        display: none !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 embeddings = OpenAIEmbeddings()
 
